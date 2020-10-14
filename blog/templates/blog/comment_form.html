@@ -1,0 +1,10 @@
+{% extends 'blog/blog.html' %}
+{% block content %}
+<h2>Say something...</h2>
+<form action="" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit">
+</form>
+<a href = {% url 'blog:list' %}>bring me back!</a>
+{% endblock %}

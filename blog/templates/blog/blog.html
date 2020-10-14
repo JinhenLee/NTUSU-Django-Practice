@@ -1,0 +1,8 @@
+<h1>NTUSU IT!</h1>
+{% if request.user.is_authenticated %}
+<h4>Logged in as {{ request.user }}. <a href = {% url 'users:logout' %}>Logout?</a></h4>
+{% else %}
+<h4>Welcome guest! Do you want to <a href = {% url 'login' %}>login</a>?</h4>
+{% endif %}
+{% block content %}
+{% endblock %}

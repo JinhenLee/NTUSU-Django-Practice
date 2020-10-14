@@ -1,0 +1,19 @@
+{% extends 'blog/blog.html' %}
+{% block content %}
+<h1>Welcome to my Blog</h1>
+{% if post_list %}
+<ul>
+	{% for post in post_list %}
+		<li><a href = {% url 'blog:detail' post.id %}>{{ post.title }}</a>
+                {% if post.owner == request.user %}
+		<p><a href = {% url 'blog:edit' post.id %}>Edit</a> or <a href = {% url 'blog:delete' post.id %}>delete?</a></p>
+                {% endif %}
+		</li>
+		
+	{% endfor %}
+</ul>
+{% else %}
+<p>This blog is empty :( Start making some posts :)</p>
+{% endif %}
+<p>Click <a href = {% url 'blog:add' %}>here</a> to add a post</p>
+{% endblock %}
